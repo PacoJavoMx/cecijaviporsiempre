@@ -2772,3 +2772,8 @@ overflow: hidden !important;
     max-width: 100%;
   }
 }
+
+/* Fondo blanco para el slider */
+.mary-hero .flexslider {
+  background-color: #fff !important;
+}
