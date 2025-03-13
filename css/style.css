@@ -2723,18 +2723,21 @@ overflow: hidden !important;
 
 
 
+
+
+
 #music-player {
     position: fixed;
-    bottom: 30px;
-    left: 30px;
-    top: auto;
-    right: auto;
+    top: 20px;
+    right: 20px;
     z-index: 9999;
 }
 
 @media (max-width: 768px) {
     #music-player {
-        bottom: 20px;
-        left: 20px;
+        top: 20px;
+        right: 20px;
+        bottom: auto;
+        left: auto;
     }
 }
