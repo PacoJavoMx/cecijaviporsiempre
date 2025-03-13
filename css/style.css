@@ -2691,3 +2691,30 @@ overflow: hidden !important;
 [data-overlay-light="10"]:before {
     opacity: 1;
 }
+
+/* Ajuste para sección Countdown */
+#countdown.section-padding {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* Ajuste para sección RSVP (Mesa) */
+#rsvp.section-padding {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* Responsive para móviles */
+@media screen and (max-width: 768px) {
+    #countdown.section-padding {
+        background-size: cover;
+        background-position: center top;
+    }
+
+    #rsvp.section-padding {
+        background-size: cover;
+        background-position: center top;
+    }
+}
