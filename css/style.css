@@ -859,7 +859,7 @@ color: #b08c3e;
 .mary-hero .flexslider .slides li {
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: bottom center;
+    background-position: center center;
     position: relative;
     min-height: 100vh;
 }
