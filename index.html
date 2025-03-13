@@ -23,12 +23,24 @@
         <script src="js/respond.min.js"></script>
     <![endif]-->
 <style>
-/* Ajuste responsive para todas las imágenes */
-img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .bg-fixed {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+  }
+
+  .mary-hero,
+  .slider-text {
+    min-height: 70vh !important;
+  }
 }
 </style></head>
 <body>

@@ -2681,9 +2681,8 @@ overflow: hidden !important;
     opacity: 1;
 }
 
-/* === Ajustes Responsive para móviles === */
+/* === Ajustes Responsive para imágenes y fondos === */
 @media (max-width: 768px) {
-  /* Imágenes normales */
   img {
     max-width: 100%;
     height: auto;
@@ -2691,33 +2690,28 @@ overflow: hidden !important;
     display: block;
   }
 
-  /* Galería */
   .gallery-box .gallery-img img {
     object-fit: contain;
     width: 100%;
     height: auto;
   }
 
-  /* Fondos tipo slider */
   .bg-fixed {
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
   }
 
-  /* Altura mínima para slider adaptado */
   .mary-hero,
   .slider-text {
     min-height: 70vh !important;
   }
 
-  /* Contenedores con padding más estrecho */
   .container, .container-fluid {
     padding-left: 15px;
     padding-right: 15px;
   }
 
-  /* Textos grandes ajustados */
   h1, h2, h3 {
     font-size: 24px !important;
   }
@@ -2726,7 +2720,6 @@ overflow: hidden !important;
     font-size: 18px !important;
   }
 
-  /* iframes como Google Maps */
   iframe {
     width: 100% !important;
     height: auto !important;
