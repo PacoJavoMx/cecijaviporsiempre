@@ -2680,3 +2680,34 @@ overflow: hidden !important;
 [data-overlay-light="10"]:before {
     opacity: 1;
 }
+
+@media (max-width: 768px) {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  
+    iframe {
+      width: 100% !important;
+      height: auto !important;
+    }
+  
+    .container {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+    h1, h2, h3 {
+      font-size: 24px !important;
+    }
+  
+    .section-title {
+      font-size: 22px !important;
+    }
+  
+    .gallery-box .gallery-img img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
