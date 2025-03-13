@@ -865,12 +865,12 @@ color: #b08c3e;
     min-height: 100vh;
 }
 
-/* Para móviles */
+/* Para móviles - cubrir toda la pantalla también */
 @media screen and (max-width: 768px) {
     .mary-hero .flexslider .slides li {
-        background-size: contain;
-        background-position: top center;
-        background-color: #000; /* opcional */
+        background-size: cover;
+        background-position: center top;
+        min-height: 100vh;
     }
 }
 
