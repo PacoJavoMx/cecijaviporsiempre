@@ -856,6 +856,7 @@ color: #b08c3e;
     position: relative;
     overflow: hidden;
 }
+
 .mary-hero .flexslider .slides li {
     background-repeat: no-repeat;
     background-size: cover;
@@ -863,6 +864,16 @@ color: #b08c3e;
     position: relative;
     min-height: 100vh;
 }
+
+/* Para móviles */
+@media screen and (max-width: 768px) {
+    .mary-hero .flexslider .slides li {
+        background-size: contain;
+        background-position: top center;
+        background-color: #000; /* opcional */
+    }
+}
+
 .mary-hero .flexslider .flex-control-nav {
     bottom: 20px;
     z-index: 1000;
