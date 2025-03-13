@@ -1,486 +1,487 @@
 <!DOCTYPE HTML>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-<title>Ceci &amp; Javi</title>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<link href="images/favicon.png" rel="icon" type="image/png"/>
-<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;family=Didact+Gothic&amp;display=swap" rel="stylesheet"/>
-<link href="css/animate.css" rel="stylesheet"/>
-<link href="css/themify-icons.css" rel="stylesheet"/>
-<link href="css/bootstrap.css" rel="stylesheet"/>
-<link href="css/flexslider.css" rel="stylesheet"/>
-<link href="css/magnific-popup.css" rel="stylesheet"/>
-<link href="css/owl.carousel.min.css" rel="stylesheet"/>
-<link href="css/owl.theme.default.min.css" rel="stylesheet"/>
-<link href="css/YouTubePopUp.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
-<!-- FOR IE9 below -->
-<!--[if lt IE 9]>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ceci & Javi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Didact+Gothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/YouTubePopUp.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
         <script src="js/respond.min.js"></script>
     <![endif]-->
-<style>
-@media (max-width: 768px) {
-  img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-  }
-
-  .bg-fixed {
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-  }
-
-  .mary-hero,
-  .slider-text {
-    min-height: 70vh !important;
-  }
-}
-</style></head>
+</head>
 <body>
-<div id="music-player" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
-<button id="music-btn" onclick="toggleMusic()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: white;">
-<i class="fas fa-music"></i>
-</button>
-<audio autoplay="" id="bg-music" loop="">
-<source src="audio/OverTheRainbow.mp3" type="audio/mpeg"/>
+        <div id="music-player" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
+            <button id="music-btn" onclick="toggleMusic()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: white;">
+              <i class="fas fa-music"></i>
+            </button>
+            <audio id="bg-music" autoplay loop>
+              <source src="audio/OverTheRainbow.mp3" type="audio/mpeg">
               Tu navegador no soporta audio en HTML5.
             </audio>
-</div>
-<!-- Preloader -->
-<div class="preloader">
-<div class="lds-heart">
-<div></div>
-</div>
-</div>
-<!-- Progress-wrapp scroll-button -->
-<div class="progress-wrap">
-<svg class="progress-circle svg-content" height="100%" viewbox="-1 -1 102 102" width="100%">
-<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
-</svg>
-</div>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg">
-<div class="container">
-<!-- Logo -->
-<div class="logo-wrapper navbar-brand valign">
-<div class="logo">
-<a href="index.html"><h2>Frase Juntitos2</h2></a>
-</div>
-</div>
-<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"> <span class="icon-bar"><i class="ti-line-double"></i></span> </button>
-<!-- Navbar links -->
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navbar-nav ml-auto">
-<li class="nav-item"><a class="nav-link active" data-scroll-nav="0" href="#home">Inicio</a></li>
-<li class="nav-item"><a class="nav-link" data-scroll-nav="5" href="#gallery">Galería</a></li>
-<li class="nav-item"><a class="nav-link" data-scroll-nav="6" href="#whenwhere">¿Cuándo  y Dónde?</a></li>
-<li class="nav-item"><a class="nav-link" data-scroll-nav="3" href="#outfit">Vestimenta</a></li>
-<li class="nav-item"><a class="nav-link" data-scroll-nav="8" href="#gift">Regalos</a></li>
-<li class="nav-item"><a class="nav-link" data-scroll-nav="7" href="#rsvp">Mesa</a></li>
-</ul>
-</div>
-</div>
-</nav>
-<!-- Slider section -->
-<header data-scroll-index="0" id="home">
-<div class="mary-hero js-fullheight">
-<div class="flexslider js-fullheight">
-<ul class="slides">
-<li class="bg-fixed" data-overlay-dark="2" id="icon" style="background-image: url(images/slider/1.jpg);">
-<div class="overlay"></div>
-<div class="container">
-<div class="row">
-<div class="col-md-12 text-center js-fullheight slider-text">
-<div class="slider-text-inner mx-auto">
-<h2>Cecilia &amp; Javier</h2>
-<h6>15 de Junio, 2025</h6>
-</div>
-</div>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</header>
-<!-- Welcome section -->
-<div class="welcome section-padding" id="welcome">
-<div class="container">
-<div class="row">
-<div class="col-md-12 text-center">
-<div class="welcome-mt">
-<div class="welcome-image-wrapper">
-<div class="img">
-<a data-scroll-nav="1" href="#"><img alt="" src="images/couple.jpg"/></a>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-8 offset-md-2 text-center">
-<h2 class="section-title">¡Nos vamos a casar!</h2>
-<p>"Hay momentos en esta vida que son especiales por si solos, queremos compartirlo contigo para hacerlo inolvidable"</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Banner section -->
-<div class="section-padding bg-img bg-fixed" data-background="images/banner/1.jpg" data-overlay-dark="1" id="banner">
-<div class="container">
-<div class="row">
-<div class="section-head col-md-12">
-<h2>Agenda la fecha</h2>
-<h1>15.06.2025</h1>
-<h1><i class="ti-heart"></i></h1>
-</div>
-</div>
-</div>
-</div>
-<!-- Gallery section -->
-<div class="section-padding bg-cream" data-scroll-index="5" id="gallery">
-<div class="container">
-<div class="row">
-<div class="col-md-12 text-center">
-<h6 class="section-subtitle">Galería</h6>
-<h2 class="section-title">Momentos que perdurarán por la eternidad</h2>
-</div>
-</div>
-<div class="row gallery-filter">
-<div class="col-md-4 gallery-item ceremony">
-<a class="img-zoom" href="images/gallery/1.jpg">
-<div class="gallery-box">
-<div class="gallery-img"> <img alt="" class="img-fluid mx-auto d-block" src="images/gallery/1.jpg"/> </div>
-<div class="gallery-detail">
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-4 gallery-item party">
-<a class="img-zoom" href="images/gallery/2.jpg">
-<div class="gallery-box">
-<div class="gallery-img"> <img alt="" class="img-fluid mx-auto d-block" src="images/gallery/2.jpg"/> </div>
-<div class="gallery-detail">
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-4 gallery-item ceremony">
-<a class="img-zoom" href="images/gallery/3.jpg">
-<div class="gallery-box">
-<div class="gallery-img"> <img alt="" class="img-fluid mx-auto d-block" src="images/gallery/3.jpg"/> </div>
-<div class="gallery-detail">
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-4 gallery-item party">
-<a class="img-zoom" href="images/gallery/4.jpg">
-<div class="gallery-box">
-<div class="gallery-img"> <img alt="" class="img-fluid mx-auto d-block" src="images/gallery/4.jpg"/> </div>
-<div class="gallery-detail">
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-4 gallery-item ceremony">
-<a class="img-zoom" href="images/gallery/5.jpg">
-<div class="gallery-box">
-<div class="gallery-img"> <img alt="" class="img-fluid mx-auto d-block" src="images/gallery/5.jpg"/> </div>
-<div class="gallery-detail">
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-4 gallery-item ceremony">
-<a class="img-zoom" href="images/gallery/5.jpg">
-<div class="gallery-box">
-<div class="gallery-img"> <img alt="" class="img-fluid mx-auto d-block" src="images/gallery/6.jpg"/> </div>
-<div class="gallery-detail">
-</div>
-</div>
-</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Countdown section -->
-<div class="section-padding bg-img bg-fixed" data-background="images/banner/4.jpg" data-overlay-dark="1" id="countdown">
-<div class="container">
-<div class="row">
-<div class="section-head col-md-12">
-<h2>Nos casaremos en</h2>
-</div>
-</div>
-<div class="row">
-<div class="col-md-12">
-<ul>
-<li><span id="days"></span>Días</li>
-<li><span id="hours"></span>Horas</li>
-<li><span id="minutes"></span>Minutos</li>
-<li><span id="seconds"></span>Segundos</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<!-- When & Where section -->
-<div class="when-where section-padding" data-scroll-index="6" id="whenwhere">
-<div class="container">
-<div class="row">
-<div class="col-md-12 text-center animate-box" data-animate-effect="fadeInUp">
-<h2 class="section-title">¿Cuándo y donde?</h2>
-</div>
-</div>
-<div class="row">
-<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-<div class="img left">
-<img alt="" src="images/whenwhere/01.jpg"/>
-</div>
-</div>
-<div class="col-md-6 valign animate-box" data-animate-effect="fadeInRight">
-<div class="content">
-<div class="date">
-<h3>15</h3>
-<h6>de Junio 2025</h6>
-</div>
-<div class="cont">
-<div class="info">
-</div>
-<h4>Ceremonia religiosa</h4>
-<ul class="list-unstyled cont-list">
-<li>
-<div class="icon"> <span class="ti-location-pin"></span> </div>
-<div class="text">
-<p>Parroquia de Santa Teresita  
-                                            <br/>del Niño Jesús
+          </div>
+      
+      
+       <!-- Preloader -->
+    <div class="preloader">
+        <div class="lds-heart">
+            <div></div>
+        </div>
+    </div>
+    <!-- Progress-wrapp scroll-button -->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Navbar -->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+			<!-- Logo -->
+			<div class="logo-wrapper navbar-brand valign">
+                <div class="logo">
+                    <a href="index.html"><h2>Cecilia &amp; Javier</h2></a>
+                </div>
+            </div>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="icon-bar"><i class="ti-line-double"></i></span> </button>
+			<!-- Navbar links -->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link active" href="#home" data-scroll-nav="0">Inicio</a></li>
+					<li class="nav-item"><a class="nav-link" href="#gallery" data-scroll-nav="5">Galería</a></li>
+					<li class="nav-item"><a class="nav-link" href="#whenwhere" data-scroll-nav="6">¿Cuándo  y Dónde?</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#outfit" data-scroll-nav="3">Vestimenta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gift" data-scroll-nav="8">Regalos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#rsvp" data-scroll-nav="7">Mesa</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+   
+    <!-- Slider section -->
+    <header id="home" data-scroll-index="0">
+        <div class="mary-hero js-fullheight">
+            <div class="flexslider js-fullheight">
+                <ul class="slides">
+                    <li class="bg-fixed" style="background-image: url(images/slider/1.jpg);" data-overlay-dark="2" id="icon">
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 text-center js-fullheight slider-text">
+                                    <div class="slider-text-inner mx-auto">
+                                        <h2>Cecilia & Javier</h2>
+                                        <h6>15 de Junio, 2025</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+    <!-- Welcome section -->
+    <div id="welcome" class="welcome section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="welcome-mt">
+                        <div class="welcome-image-wrapper">
+                            <div class="img">
+                                <a href="#" data-scroll-nav="1"><img src="images/couple.jpg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 offset-md-2 text-center">
+                    <h2 class="section-title">¡Nos vamos a casar!</h2>
+                    <p>"Hay momentos en esta vida que son especiales por si solos, queremos compartirlo contigo para hacerlo inolvidable"</p>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+    <!-- Banner section -->
+   <div id="banner" class="section-padding bg-img bg-fixed" data-overlay-dark="1" data-background="images/banner/1.jpg">
+       <div class="container">
+            <div class="row">
+                <div class="section-head col-md-12">
+                   <h2>Agenda la fecha</h2>
+                    <h1>15.06.2025</h1>
+                    <h1><i class="ti-heart"></i></h1>
+                </div>
+            </div>
+        </div>
+   </div>
+   
+    <!-- Gallery section -->
+    <div id="gallery" class="section-padding bg-cream" data-scroll-index="5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h6 class="section-subtitle">Galería</h6>
+                    <h2 class="section-title">Momentos que perdurarán por la eternidad</h2>
+                </div>
+            </div>
+            <div class="row gallery-filter">
+                <div class="col-md-4 gallery-item ceremony">
+                    <a href="images/gallery/1.jpg" class="img-zoom">
+                        <div class="gallery-box">
+                            <div class="gallery-img"> <img src="images/gallery/1.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                            <div class="gallery-detail">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 gallery-item party">
+                    <a href="images/gallery/2.jpg" class="img-zoom">
+                        <div class="gallery-box">
+                            <div class="gallery-img"> <img src="images/gallery/2.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                            <div class="gallery-detail">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 gallery-item ceremony">
+                    <a href="images/gallery/3.jpg" class="img-zoom">
+                        <div class="gallery-box">
+                            <div class="gallery-img"> <img src="images/gallery/3.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                            <div class="gallery-detail">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 gallery-item party">
+                    <a href="images/gallery/4.jpg" class="img-zoom">
+                        <div class="gallery-box">
+                            <div class="gallery-img"> <img src="images/gallery/4.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                            <div class="gallery-detail">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 gallery-item ceremony">
+                    <a href="images/gallery/5.jpg" class="img-zoom">
+                        <div class="gallery-box">
+                            <div class="gallery-img"> <img src="images/gallery/5.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                            <div class="gallery-detail">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 gallery-item ceremony">
+                    <a href="images/gallery/5.jpg" class="img-zoom">
+                        <div class="gallery-box">
+                            <div class="gallery-img"> <img src="images/gallery/6.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                            <div class="gallery-detail">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Countdown section -->
+     <div id="countdown" class="section-padding bg-img bg-fixed" data-overlay-dark="1" data-background="images/banner/4.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="section-head col-md-12">
+                    <h2>Nos casaremos en</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+                        <li><span id="days"></span>Días</li>
+                        <li><span id="hours"></span>Horas</li>
+                        <li><span id="minutes"></span>Minutos</li>
+                        <li><span id="seconds"></span>Segundos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- When & Where section -->
+    <div id="whenwhere" class="when-where section-padding" data-scroll-index="6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center animate-box" data-animate-effect="fadeInUp">
+                    <h2 class="section-title">¿Cuándo y donde?</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+                    <div class="img left">
+                        <img src="images/whenwhere/01.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 valign animate-box" data-animate-effect="fadeInRight">
+                    <div class="content">
+                        <div class="date">
+                            <h3>15</h3>
+                            <h6>de Junio 2025</h6>
+                        </div>
+                        <div class="cont">
+                            <div class="info">
+                                
+                            </div>
+                            <h4>Ceremonia religiosa</h4>
+                            <ul class="list-unstyled cont-list">
+                                <li>
+                                    <div class="icon"> <span class="ti-location-pin"></span> </div>
+                                    <div class="text">
+                                        <p>Parroquia de Santa Teresita  
+                                            <br>del Niño Jesús
                                         </p>
-</div>
-</li>
-<li>
-<div class="icon"> <span class="ti-time"></span> </div>
-<div class="text">
-<p>2:30pm</p>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<br/>
-<iframe allowfullscreen="" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470.383062819384!2d-99.1340358182788!3d19.40961882308187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fee81b907449%3A0x9103ecff0c37d686!2sParroquia%20de%20Santa%20Teresita%20del%20Ni%C3%B1o%20Jes%C3%BAs!5e0!3m2!1ses-419!2smx!4v1741503538104!5m2!1ses-419!2smx" style="border:0;" width="100%"></iframe>
-<div class="row">
-<div class="col-md-6 order2 valign animate-box" data-animate-effect="fadeInLeft">
-<div class="content">
-<div class="date">
-<h3>15</h3>
-<h6>de Junio 2025</h6>
-</div>
-<div class="cont">
-<div class="info">
-</div>
-<h4>Recepción</h4>
-<ul class="list-unstyled cont-list">
-<li>
-<div class="icon"> <span class="ti-location-pin"></span> </div>
-<div class="text">
-<p>Salón 
-                                            <br/>Paris Rouge
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon"> <span class="ti-time"></span> </div>
+                                    <div class="text">
+                                        <p>2:30pm</p>
+                                    </div>                
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470.383062819384!2d-99.1340358182788!3d19.40961882308187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fee81b907449%3A0x9103ecff0c37d686!2sParroquia%20de%20Santa%20Teresita%20del%20Ni%C3%B1o%20Jes%C3%BAs!5e0!3m2!1ses-419!2smx!4v1741503538104!5m2!1ses-419!2smx" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="row">
+                <div class="col-md-6 order2 valign animate-box" data-animate-effect="fadeInLeft">
+                    <div class="content">
+                        <div class="date">
+                            <h3>15</h3>
+                            <h6>de Junio 2025</h6>
+                        </div>
+                        <div class="cont">
+                            <div class="info">
+                            </div>
+                            <h4>Recepción</h4>
+                            <ul class="list-unstyled cont-list">
+                                <li>
+                                    <div class="icon"> <span class="ti-location-pin"></span> </div>
+                                    <div class="text">
+                                        <p>Salón 
+                                            <br>Paris Rouge
                                         </p>
-</div>
-</li>
-<li>
-<div class="icon"> <span class="ti-time"></span> </div>
-<div class="text">
-<p>6:00pm</p>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-6 order1 animate-box" data-animate-effect="fadeInRight">
-<div class="img">
-<img alt="" src="images/whenwhere/02.jpg"/>
-</div>
-</div>
-</div>
-<br/>
-<iframe allowfullscreen="" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10645.305415484023!2d-99.07922499483112!3d19.38283838427615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fdb3de40f393%3A0x38537476ebe1d8a8!2sSal%C3%B3n%20Paris%20Rouge!5e0!3m2!1ses-419!2smx!4v1741658712397!5m2!1ses-419!2smx" style="border:0;" width="100%"></iframe>
-</div>
-</div>
-<div class="marybrian-blog section-padding">
-<div class="container">
-<div class="row mb-30">
-</div>
-</div>
-</div>
-<!-- Dress Code section -->
-<div class="bride-groom clear section-padding bg-cream" data-scroll-index="3" id="outfit">
-<div class="container">
-<div class="row">
-<div class="col-md-12 text-center mb-30 animate-box" data-animate-effect="fadeInUp">
-<h6 class="section-subtitle">Código de Vestimenta</h6>
-<h2 class="section-title">Formal</h2>
-</div>
-<div class="col-md-4 offset-md-2 text-center animate-box" data-animate-effect="fadeInLeft">
-<div class="item mb-30">
-<div class="img"> <img alt="" src="images/dress.png"/> </div>
-</div>
-</div>
-<div class="col-md-4 text-center animate-box" data-animate-effect="fadeInRight">
-<div class="item mb-30">
-<div class="img"> <img alt="" src="images/suit.png"/> </div>
-</div>
-</div>
-<div class="col-md-12 text-center mb-30 animate-box">
-<p>Vestimenta de ocasión formal<br/>
-                       Hombres: Traje<br/>
-                       Mujeres: Vestido<br/> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon"> <span class="ti-time"></span> </div>
+                                    <div class="text">
+                                        <p>6:00pm</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 order1 animate-box" data-animate-effect="fadeInRight">
+                    <div class="img">
+                        <img src="images/whenwhere/02.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10645.305415484023!2d-99.07922499483112!3d19.38283838427615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fdb3de40f393%3A0x38537476ebe1d8a8!2sSal%C3%B3n%20Paris%20Rouge!5e0!3m2!1ses-419!2smx!4v1741658712397!5m2!1ses-419!2smx" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+ 
+        </div>
+    </div>
+    <div class="marybrian-blog section-padding">
+		<div class="container">
+			<div class="row mb-30">
+           </div>
+		</div>
+	</div>
+    <!-- Dress Code section -->
+    <div id="outfit" class="bride-groom clear section-padding bg-cream" data-scroll-index="3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center mb-30 animate-box" data-animate-effect="fadeInUp">
+                    <h6 class="section-subtitle">Código de Vestimenta</h6>
+                    <h2 class="section-title">Formal</h2>
+                </div>
+                <div class="col-md-4 offset-md-2 text-center animate-box" data-animate-effect="fadeInLeft">
+                    <div class="item mb-30">
+                        <div class="img"> <img src="images/dress.png" alt=""> </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center animate-box" data-animate-effect="fadeInRight">
+                    <div class="item mb-30">
+                        <div class="img"> <img src="images/suit.png" alt=""> </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center mb-30 animate-box">
+                    <p>Vestimenta de ocasión formal<br>
+                       Hombres: Traje<br>
+                       Mujeres: Vestido<br> 
                        Favor no utilizar colores blanco, verde y dorado.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Gift Registry section -->
-<div class="gift-registry" data-scroll-index="8" id="gift">
-<div class="container">
-<div class="row">
-<div class="col-md-12 text-center">
-<h2 class="section-title">Regalos</h2>
-<div class="text">
-<p>“El mejor regalo es tu presencia y compañía, cualquier 
-                        <br/>otra muestra de cariño se agradece”.<br/>
-</p>
-</div>
-<!-- <h2 class="section-title">Con su asistencia estaríamos más que agradecidos pero si quieren obsequiarnos algo más pueden hacer una transferencia bancaria.</h2>-->
-</div>
-</div>
-<div class="row">
-<div class="col-md-12 text-center">
-<div class="">
-<h6 class="section-subtitle">Mesa de Regalos 1</h6>
-<p>Informacion<br/>
-                            Mesa de Regalos <br/>
-                            1<br/>
-</p></div>
-<div class="">
-<h6 class="section-subtitle">Mesa de Regalos 2</h6>
-                            Mesa de regalos 2 Informacion<br/><p>
-</p></div>
-<div class="">
-<h6 class="section-subtitle">Mesa de Regalos 3 </h6><br/>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!--  section -->
-<div class="welcome section-padding" id="welcome">
-<div class="container">
-<div class="row">
-<div class="col-md-12 text-center">
-<div class="welcome-mt">
-</div>
-</div>
-<div class="col-md-8 offset-md-2 text-center">
-</div>
-</div>
-</div>
-</div>
-<!-- Banner section -->
-<!-- RSVP Form section -->
-<div class="rsvp section-padding bg-img bg-fixed" data-background="images/banner/2.jpg" data-scroll-index="7" id="rsvp">
-<div class="container">
-<div class="row">
-<div class="col-md-6 offset-md-3 bg-white p-60">
-<h2 class="text-center">Hemos asignado<br/>tu lugar</h2>
-<h6 class="text-center">Favor de visualizar tu mesa.</h6>
-<div class="text-center">
-<input class="btn" onclick="window.location.href='confirmar-asistencia.html'" type="button" value="Visualizar mesa"/>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!--  section -->
-<div class="welcome section-padding" id="welcome">
-<div class="container">
-<div class="row">
-<div class="col-md-12 text-center">
-<div class="welcome-mt">
-</div>
-</div>
-<div class="col-md-8 offset-md-2 text-center">
-</div>
-</div>
-</div>
-</div>
-<!-- Instagram section -->
-<div class="insta">
-<div class="container flex">
-<div class="img">
-<a href="#0"> <img alt="" src="images/insta/1.jpg"/> </a> <i class="ti-instagram"></i>
-</div>
-<div class="img">
-<a href="#0"> <img alt="" src="images/insta/2.jpg"/> </a> <i class="ti-instagram"></i>
-</div>
-<div class="img">
-<a href="#0"> <img alt="" src="images/insta/3.jpg"/> </a> <i class="ti-instagram"></i>
-</div>
-<div class="img">
-<a href="#0"> <img alt="" src="images/insta/4.jpg"/> </a> <i class="ti-instagram"></i>
-</div>
-<div class="img">
-<a href="#0"> <img alt="" src="images/insta/5.jpg"/> </a> <i class="ti-instagram"></i>
-</div>
-<div class="follow">
-<a class="text-bg" href="#0"> <span><i class="ti-instagram"></i> #CeciJavi</span></a>
-</div>
-</div>
-</div>
-<!-- Footer section -->
-<footer id="footer">
-<div class="container">
-<div class="top-footer">
-<div class="row">
-<div class="col-md-12 text-center">
-<div class="section-padding">
-<h2><span>Cecilia <small> &amp;</small>Javier</span></h2>
-<h6>15 de Junio, 2025</h6>
-</div>
-</div>
-</div>
-</div>
-<div class="sub-footer">
-<div class="row">
-<div class="col-md-12 text-center">
-<p>Nos gustaría que nos acompañes en este día tan especial</p>
-</div>
-</div>
-</div>
-</div>
-</footer>
-<!-- jQuery -->
-<script src="js/jquery.min.js"></script>
-<script src="js/modernizr-2.6.2.min.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.flexslider-min.js"></script>
-<script src="js/sticky-kit.min.js"></script>
-<script src="js/scrollIt.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/isotope.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/YouTubePopUp.js"></script>
-<script src="js/template.js"></script>
-<script src="js/scriptmusic.js"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gift Registry section -->
+    <div id="gift" class="gift-registry" data-scroll-index="8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="section-title">Regalos</h2>
+                    <div class="text">
+                        <p>“El mejor regalo es tu presencia y compañía, cualquier 
+                        <br>otra muestra de cariño se agradece”.<br>
+                        </p>
+                    </div>
+                    <!-- <h2 class="section-title">Con su asistencia estaríamos más que agradecidos pero si quieren obsequiarnos algo más pueden hacer una transferencia bancaria.</h2>-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                        <div class="">
+                            <h6 class="section-subtitle">Mesa de Regalos 1</h6>
+                            <p>Informacion<br>
+                            Mesa de Regalos <br>
+                            1<br>
+                        </div>
+                        <div class="">
+                            <h6 class="section-subtitle">Mesa de Regalos 2</h6>
+                            Mesa de regalos 2 Informacion<br><p>
+                        </div>
+                        <div class="">
+                            <h6 class="section-subtitle">Mesa de Regalos 3 </h6><br>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  section -->
+    <div id="welcome" class="welcome section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="welcome-mt">
+                    </div>
+                </div>
+                <div class="col-md-8 offset-md-2 text-center">
+                </div>
+            </div>
+        </div>
+    </div>  
+        
+    <!-- Banner section -->
+    <!-- RSVP Form section -->
+    <div id="rsvp" class="rsvp section-padding bg-img bg-fixed" data-background="images/banner/2.jpg" data-scroll-index="7">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 bg-white p-60">
+                    <h2 class="text-center">Hemos asignado<br>tu lugar</br></h2>
+                    <h6 class="text-center">Favor de visualizar tu mesa.</h6>
+                        <div class="text-center">
+                            <input class="btn" value="Visualizar mesa" type="button" onclick="window.location.href='confirmar-asistencia.html'">
+                        </div>                  
+                                
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+        <!--  section -->
+        <div id="welcome" class="welcome section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="welcome-mt">
+                        </div>
+                    </div>
+                    <div class="col-md-8 offset-md-2 text-center">
+                    </div>
+                </div>
+            </div>
+        </div>  
+    
+    <!-- Instagram section -->
+    <div class="insta">
+        <div class="container flex">
+            <div class="img">
+                <a href="#0"> <img src="images/insta/1.jpg" alt=""> </a> <i class="ti-instagram"></i>
+            </div>
+            <div class="img">
+                <a href="#0"> <img src="images/insta/2.jpg" alt=""> </a> <i class="ti-instagram"></i>
+            </div>
+            <div class="img">
+                <a href="#0"> <img src="images/insta/3.jpg" alt=""> </a> <i class="ti-instagram"></i>
+            </div>
+            <div class="img">
+                <a href="#0"> <img src="images/insta/4.jpg" alt=""> </a> <i class="ti-instagram"></i>
+            </div>
+            <div class="img">
+                <a href="#0"> <img src="images/insta/5.jpg" alt=""> </a> <i class="ti-instagram"></i>
+            </div>
+            <div class="follow">
+                <a href="#0" class="text-bg"> <span><i class="ti-instagram"></i> #CeciJavi</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer section -->
+    <footer id="footer">
+        <div class="container">
+            <div class="top-footer">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="section-padding">
+                            <h2><span>Cecilia <small> &amp;</small>Javier</span></h2>
+                            <h6>15 de Junio, 2025</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-footer">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>Nos gustaría que nos acompañes en este día tan especial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/sticky-kit.min.js"></script>
+    <script src="js/scrollIt.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/YouTubePopUp.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/scriptmusic.js"></script>
+
 </body>
+
 </html>
