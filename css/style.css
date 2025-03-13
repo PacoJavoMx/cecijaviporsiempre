@@ -2682,32 +2682,44 @@ overflow: hidden !important;
 }
 
 @media (max-width: 768px) {
+    /* Imágenes responsive */
     img {
       max-width: 100%;
       height: auto;
+      display: block;
     }
   
+    /* Asegurar que iframes como Google Maps se escalen */
     iframe {
       width: 100% !important;
       height: auto !important;
     }
   
-    .container {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-  
+    /* Textos grandes que se ajusten mejor */
     h1, h2, h3 {
       font-size: 24px !important;
     }
   
-    .section-title {
-      font-size: 22px !important;
+    h4, h5, h6, .section-title, .section-subtitle {
+      font-size: 18px !important;
     }
   
-    .gallery-box .gallery-img img {
+    /* Ajustes de padding para que no haya espacios excesivos */
+    .container, .container-fluid {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  
+    /* Galería: columnas en 1 sola para mejor lectura */
+    .gallery-item {
       width: 100%;
-      height: auto;
+      margin-bottom: 20px;
+    }
+  
+    /* Evitar que elementos se salgan del viewport */
+    .row {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
   
