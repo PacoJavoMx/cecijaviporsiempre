@@ -2720,17 +2720,20 @@ overflow: hidden !important;
 }
 
 
+
+
+
 #music-player {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    bottom: 30px;
+    left: 30px;
+    top: auto;
+    right: auto;
     z-index: 9999;
 }
 
 @media (max-width: 768px) {
     #music-player {
-        top: auto;
-        right: auto;
         bottom: 20px;
         left: 20px;
     }
