@@ -2759,3 +2759,43 @@ overflow: hidden !important;
     -webkit-filter: none !important;
     transition: all 0.3s ease-in-out;
 }
+
+#music-player {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    top: auto !important;
+    right: auto !important;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+  }
+  
+  #music-btn {
+    width: 60px;
+    height: 60px;
+    background-color: transparent; /* fondo negro */
+    border: none;
+    border-radius: 50%;
+    color: #b08c3e;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  #music-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    z-index: 1;
+    background: conic-gradient(#b08c3e 0%, rgba(0, 0, 0, 0.1) 0%);
+  }
+  
+  

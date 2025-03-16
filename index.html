@@ -23,15 +23,16 @@
     <![endif]-->
 </head>
 <body>
-        <div id="music-player" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
-            <button id="music-btn" onclick="toggleMusic()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: white;">
-              <i class="fas fa-music"></i>
-            </button>
-            <audio id="bg-music" autoplay loop>
-              <source src="audio/OverTheRainbow.mp3" type="audio/mpeg">
-              Tu navegador no soporta audio en HTML5.
-            </audio>
-          </div>
+    <div id="music-player">
+        <button id="music-btn" onclick="toggleMusic()">
+          <i class="fas fa-music"></i>
+        </button>
+        <audio id="bg-music" autoplay loop>
+          <source src="audio/OverTheRainbow.mp3" type="audio/mpeg">
+          Tu navegador no soporta audio en HTML5.
+        </audio>
+      </div>
+      
       
       
        <!-- Preloader -->
