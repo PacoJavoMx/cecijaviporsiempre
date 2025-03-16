@@ -2762,8 +2762,8 @@ overflow: hidden !important;
 
 #music-player {
     position: fixed !important;
-    bottom: 20px !important;
-    left: 20px !important;
+    bottom: 30px !important;
+    left: 30px !important;
     top: auto !important;
     right: auto !important;
     z-index: 9999;
@@ -2771,12 +2771,13 @@ overflow: hidden !important;
     height: 60px;
   }
   
+  
   #music-btn {
     width: 60px;
     height: 60px;
-    background-color: transparent; /* fondo negro */
-    border: none;
     border-radius: 50%;
+    background: transparent;
+    border: none;
     color: #b08c3e;
     font-size: 20px;
     display: flex;
@@ -2784,9 +2785,22 @@ overflow: hidden !important;
     justify-content: center;
     position: relative;
     z-index: 2;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
   }
-  
+  #music-progress::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid #b08c3e;
+    mask-image: conic-gradient(#000 calc(var(--progress, 0%) + 0.5%), transparent 0%);
+    -webkit-mask-image: conic-gradient(#000 calc(var(--progress, 0%) + 0.5%), transparent 0%);
+  }
+  #music-btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+    
   #music-progress {
     position: absolute;
     top: 0;
@@ -2794,8 +2808,8 @@ overflow: hidden !important;
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    background: conic-gradient(#b08c3e 0%, transparent 0%);
     z-index: 1;
-    background: conic-gradient(#b08c3e 0%, rgba(0, 0, 0, 0.1) 0%);
+    transition: background 0.3s ease;
   }
-  
   
