@@ -2720,12 +2720,6 @@ overflow: hidden !important;
 }
 
 
-
-
-
-
-
-
 #music-player {
     position: fixed;
     top: 20px;
@@ -2740,4 +2734,23 @@ overflow: hidden !important;
         bottom: auto;
         left: auto;
     }
+}
+
+/* === Mesa de Regalos === */
+.gift-img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 10px;
+}
+
+/* === Corregir imágenes de Instagram (#CeciJavi) === */
+.insta .img img {
+    filter: none !important;
+    -webkit-filter: none !important;
+    transition: all 0.3s ease-in-out;
 }
