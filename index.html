@@ -390,16 +390,17 @@
     </div>
   </div>
   
-  <!-- Transferencia Bancaria -->
-  <div class="col-md-4 text-center">
+<!-- Transferencia Bancaria -->
+<div class="col-md-4 text-center">
     <div class="gift-box">
       <h6 class="section-subtitle">Transferencia Bancaria</h6>
-      <a href="regalos/transferencia-nueva.png" target="_blank">
+      <a href="#" onclick="copiarCLABE(event)" style="text-decoration: none;">
         <img src="regalos/BBVA.png" alt="Transferencia" class="gift-img mb-3">
-        <p>Cuenta a nombre de Paula Cecilia Luna Cárdenas
-        <br>CLABE:012680027992719450
-        <br>
-        Con Referencia o Concepto: CeciJavi
+        <p>
+          Cuenta a nombre de Paula Cecilia Luna Cárdenas
+          <br><span id="clabe">CLABE: 012680027992719450</span>
+          <br>
+          Con Referencia o Concepto: CeciJavi
         </p>
       </a>
     </div>
@@ -545,6 +546,8 @@
     <script src="js/YouTubePopUp.js"></script>
     <script src="js/template.js"></script>
     <script src="js/scriptmusic.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/clabe-copiada.js"></script>
 
 </body>
 
