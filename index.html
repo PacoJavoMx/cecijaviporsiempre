@@ -562,16 +562,21 @@
     <script src="js/clabe-copiada.js"></script>
 
 
-    <script src="js/clabe-copiada.js"></script>
     <script>
         $(function(){
-            $.scrollIt({
-                scrollTime: 800,
-                easing: 'easeInOutExpo',
-                topOffset: -70
-            });
+          $.scrollIt({
+            scrollTime: 800,
+            easing: 'easeInOutExpo',
+            topOffset: -70
+          });
         });
-    </script>
+      
+        // Cierra el menú móvil al seleccionar una opción
+        $('.navbar-collapse .nav-link').on('click', function () {
+          $('.navbar-collapse').collapse('hide');
+        });
+      </script>
+    
     </body>
     
 </body>
