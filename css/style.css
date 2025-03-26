@@ -593,18 +593,23 @@ input[type=radio]:checked:before {
     box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.03);
 }
 .nav-scroll .navbar-toggler-icon {
-    color: #b08c3e;
+    color: #1b1b1b;
 }
 .nav-scroll .navbar-nav .nav-link {
     color: #1b1b1b;
 }
 .nav-scroll .navbar-nav .active {
-    color: #b08c3e !important;
+    color: #1b1b1b !important;
 }
 .nav-scroll .navbar-nav .logo {
     padding: 15px 0;
     color: #666;
 }
+
+.navbar-collapse .nav-link.active {
+    color: #b08c3e !important;
+}
+
 .nav-scroll .logo {
     width: 240px;
 }
@@ -2533,10 +2538,10 @@ overflow: hidden !important;
         margin: 0px auto !important;
     }
     .navbar .navbar-nav .nav-link {
-        color: #666;
+        color: #b08c3e;
     }
     .nav-scroll .navbar-collapse .nav-link {
-        color: #666 !important;
+        color: #b08c3e !important;
     }
     .nav-scroll .navbar-collapse .active {
         color: #b08c3e !important;
