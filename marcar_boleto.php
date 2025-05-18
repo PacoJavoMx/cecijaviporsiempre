@@ -1,6 +1,7 @@
 <?php
 $conn = new mysqli("156.67.64.3", "u332392237_wedding", "Temporal2025**", "u332392237_cecijaviaccess");
 $conn->set_charset("utf8");
+$conn->query("SET time_zone = '-06:00'");
 
 $codigo = $_GET['codigo'] ?? '';
 
