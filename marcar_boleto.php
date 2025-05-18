@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "TU_USUARIO", "TU_PASSWORD", "TU_BASE_DE_DATOS");
+$conn = new mysqli("156.67.64.3", "u332392237_wedding", "Temporal2025**", "u332392237_cecijaviaccess");
 $conn->set_charset("utf8");
 
 $codigo = $_GET['codigo'] ?? '';
