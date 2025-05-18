@@ -82,39 +82,84 @@
 	</div>      
     <!-- Content -->
 <!-- Content -->
-<div class="marybrian-blog section-padding">
-	<div class="container">
-		<div class="row mb-30">
-			<!-- Imagen añadida -->
+<div class="row mb-30 justify-content-center">
+    <div class="col-md-10 text-center">
+        <h2 class="mb-4">Control de Acceso</h2>
+        <p>Escanea el código QR del boleto o introduce varios códigos separados por coma.</p>
 
-			<iframe src="googledrive://folder/1fHW_8hcVHJvWVVWFV3jmp-6qQy2lIZIe" width="1200" height="800" frameborder="0" marginheight="0" marginwidth="0"></iframe>
-		</div>	 
-	</div>
-</div>
+        <!-- Escáner QR -->
+        <div id="reader" style="width: 300px; margin: auto;"></div>
 
-    <!-- Instagram section -->
-    <div class="insta mt-90">
-        <div class="container flex">
-            <div class="img">
-                <a href="#0"> <img src="images/insta/1.jpg" alt=""> </a> <i class="ti-instagram"></i>
-            </div>
-            <div class="img">
-                <a href="#0"> <img src="images/insta/2.jpg" alt=""> </a> <i class="ti-instagram"></i>
-            </div>
-            <div class="img">
-                <a href="#0"> <img src="images/insta/3.jpg" alt=""> </a> <i class="ti-instagram"></i>
-            </div>
-            <div class="img">
-                <a href="#0"> <img src="images/insta/4.jpg" alt=""> </a> <i class="ti-instagram"></i>
-            </div>
-            <div class="img">
-                <a href="#0"> <img src="images/insta/5.jpg" alt=""> </a> <i class="ti-instagram"></i>
-            </div>
-            <div class="follow">
-                <a href="#0" class="text-bg"> <span><i class="ti-instagram"></i> #CeciJavi</span></a>
-            </div>
+        <!-- Resultado -->
+        <div id="resultado" class="mt-4 h4"></div>
+
+        <!-- Ingreso manual -->
+        <div class="mt-5">
+            <textarea id="codigos_manuales" class="form-control w-75 mx-auto mb-2" rows="3" placeholder="Ej: QR001,QR002,QR045"></textarea>
+            <button class="btn btn-primary" onclick="procesarCodigosManuales()">Validar Códigos</button>
         </div>
     </div>
+</div>
+
+
+<!-- QR Scanner y lógica -->
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script>
+    function mostrarMensaje(texto, color = "black") {
+        const div = document.getElementById("resultado");
+        div.innerText = texto;
+        div.style.color = color;
+    }
+
+    function procesarCodigo(qr) {
+        validarCodigo(qr);
+    }
+
+    function procesarCodigosManuales() {
+        const input = document.getElementById("codigos_manuales").value.trim();
+        if (!input) {
+            mostrarMensaje("Ingresa al menos un código.", "gray");
+            return;
+        }
+
+        const codigos = input.split(",").map(c => c.trim()).filter(c => c !== "");
+        if (codigos.length === 0) {
+            mostrarMensaje("Formato no válido.", "gray");
+            return;
+        }
+
+        codigos.forEach((codigo, i) => {
+            setTimeout(() => {
+                validarCodigo(codigo);
+            }, i * 1000); // Pequeña pausa entre cada código
+        });
+    }
+
+    function validarCodigo(codigo) {
+        fetch(`verificar_boleto.php?codigo=${codigo}`)
+            .then(res => res.json())
+            .then(data => {
+                if (!data.valido) {
+                    mostrarMensaje(`❌ ${codigo} no válido`, "red");
+                } else if (data.usado) {
+                    mostrarMensaje(`⚠️ ${data.nombre} (${codigo}) ya registrado`, "orange");
+                } else {
+                    fetch(`marcar_boleto.php?codigo=${codigo}`)
+                        .then(() => {
+                            mostrarMensaje(`✅ ${data.nombre} (${codigo}) — ${data.personas} persona(s) — Mesa ${data.mesa}`, "green");
+                        });
+                }
+            })
+            .catch(err => {
+                mostrarMensaje("Error de conexión", "gray");
+                console.error(err);
+            });
+    }
+
+    const html5QrCode = new Html5Qrcode("reader");
+    html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, procesarCodigo);
+</script>
+
     <!-- Footer section -->
     <footer id="footer">
         <div class="container">
