@@ -136,25 +136,36 @@
     }
 
     function validarCodigo(codigo) {
-        fetch(`verificar_boleto.php?codigo=${codigo}`)
-            .then(res => res.json())
-            .then(data => {
-                if (!data.valido) {
-                    mostrarMensaje(`❌ ${codigo} no válido`, "red");
-                } else if (data.usado) {
-                    mostrarMensaje(`⚠️ ${data.nombre} (${codigo}) ya registrado`, "orange");
-                } else {
-                    fetch(`marcar_boleto.php?codigo=${codigo}`)
-                        .then(() => {
+    fetch(`verificar_boleto.php?codigo=${codigo}`)
+        .then(res => res.json())
+        .then(data => {
+            if (!data.valido) {
+                mostrarMensaje(`❌ ${codigo} no válido`, "red");
+            } else if (data.usado) {
+                mostrarMensaje(`⚠️ ${data.nombre} (${codigo}) ya registrado`, "orange");
+            } else {
+                // Si no ha sido usado, lo marcamos y luego mostramos la palomita verde
+                fetch(`marcar_boleto.php?codigo=${codigo}`)
+                    .then(res => res.json())
+                    .then(result => {
+                        if (result.exito) {
                             mostrarMensaje(`✅ ${data.nombre} (${codigo}) — ${data.personas} persona(s) — Mesa ${data.mesa}`, "green");
-                        });
-                }
-            })
-            .catch(err => {
-                mostrarMensaje("Error de conexión", "gray");
-                console.error(err);
-            });
-    }
+                        } else {
+                            mostrarMensaje(`⚠️ No se pudo marcar el boleto ${codigo}.`, "orange");
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Error al marcar boleto:", err);
+                        mostrarMensaje(`Error al registrar el acceso de ${codigo}.`, "gray");
+                    });
+            }
+        })
+        .catch(err => {
+            console.error("Error al verificar código:", err);
+            mostrarMensaje("Error de conexión con el servidor", "gray");
+        });
+}
+
 
     const html5QrCode = new Html5Qrcode("reader");
     html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, procesarCodigo);
