@@ -105,6 +105,12 @@
 <!-- QR Scanner y lógica -->
 <script src="https://unpkg.com/html5-qrcode"></script>
 <script>
+    function mostrarMensaje(texto, color = "black") {
+        const div = document.getElementById("resultado");
+        div.innerText = texto;
+        div.style.color = color;
+    }
+
     function procesarCodigo(qr) {
         validarCodigo(qr);
     }
@@ -112,20 +118,20 @@
     function procesarCodigosManuales() {
         const input = document.getElementById("codigos_manuales").value.trim();
         if (!input) {
-            Swal.fire("Atención", "Ingresa al menos un código.", "info");
+            mostrarMensaje("Ingresa al menos un código.", "gray");
             return;
         }
 
         const codigos = input.split(",").map(c => c.trim()).filter(c => c !== "");
         if (codigos.length === 0) {
-            Swal.fire("Error", "Formato no válido.", "error");
+            mostrarMensaje("Formato no válido.", "gray");
             return;
         }
 
         codigos.forEach((codigo, i) => {
             setTimeout(() => {
                 validarCodigo(codigo);
-            }, i * 1000);
+            }, i * 1000); // Pequeña pausa entre cada código
         });
     }
 
@@ -166,7 +172,8 @@
             });
     }
 
-    const html5QrCode = new Html5QrCode("reader");
+
+    const html5QrCode = new Html5Qrcode("reader");
     html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, procesarCodigo);
 </script>
 
