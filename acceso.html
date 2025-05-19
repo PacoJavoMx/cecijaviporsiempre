@@ -200,8 +200,11 @@ function validarCodigo(codigo) {
 }
 
 
-const html5QrCode = new Html5QrCode("reader");
-html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, procesarCodigo);
+document.addEventListener("DOMContentLoaded", function () {
+  const html5QrCode = new Html5QrCode("reader");
+  html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, procesarCodigo);
+});
+
 </script>
     <!-- Footer section -->
     <footer id="footer">
