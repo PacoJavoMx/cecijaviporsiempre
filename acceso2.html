@@ -105,12 +105,6 @@
 <!-- QR Scanner y lógica -->
 <script src="https://unpkg.com/html5-qrcode"></script>
 <script>
-    function mostrarMensaje(texto, color = "black") {
-        const div = document.getElementById("resultado");
-        div.innerText = texto;
-        div.style.color = color;
-    }
-
     function procesarCodigo(qr) {
         validarCodigo(qr);
     }
@@ -118,56 +112,61 @@
     function procesarCodigosManuales() {
         const input = document.getElementById("codigos_manuales").value.trim();
         if (!input) {
-            mostrarMensaje("Ingresa al menos un código.", "gray");
+            Swal.fire("Atención", "Ingresa al menos un código.", "info");
             return;
         }
 
         const codigos = input.split(",").map(c => c.trim()).filter(c => c !== "");
         if (codigos.length === 0) {
-            mostrarMensaje("Formato no válido.", "gray");
+            Swal.fire("Error", "Formato no válido.", "error");
             return;
         }
 
         codigos.forEach((codigo, i) => {
             setTimeout(() => {
                 validarCodigo(codigo);
-            }, i * 1000); // Pequeña pausa entre cada código
+            }, i * 1000);
         });
     }
 
     function validarCodigo(codigo) {
-    fetch(`verificar_boleto.php?codigo=${codigo}`)
-        .then(res => res.json())
-        .then(data => {
-            if (!data.valido) {
-                mostrarMensaje(`❌ ${codigo} no válido`, "red");
-            } else if (data.usado) {
-                mostrarMensaje(`⚠️ ${data.nombre} (${codigo}) ya registrado`, "orange");
-            } else {
-                // Si no ha sido usado, lo marcamos y luego mostramos la palomita verde
-                fetch(`marcar_boleto.php?codigo=${codigo}`)
-                    .then(res => res.json())
-                    .then(result => {
-                        if (result.exito) {
-                            mostrarMensaje(`✅ ${data.nombre} (${codigo}) — ${data.personas} persona(s) — Mesa ${data.mesa}`, "green");
-                        } else {
-                            mostrarMensaje(`⚠️ No se pudo marcar el boleto ${codigo}.`, "orange");
-                        }
-                    })
-                    .catch(err => {
-                        console.error("Error al marcar boleto:", err);
-                        mostrarMensaje(`Error al registrar el acceso de ${codigo}.`, "gray");
-                    });
-            }
-        })
-        .catch(err => {
-            console.error("Error al verificar código:", err);
-            mostrarMensaje("Error de conexión con el servidor", "gray");
-        });
-}
+        fetch(`verificar_boleto.php?codigo=${codigo}`)
+            .then(res => res.json())
+            .then(data => {
+                if (!data.valido) {
+                    Swal.fire("❌ Código inválido", `${codigo} no está registrado.`, "error");
+                } else if (data.usado) {
+                    Swal.fire("⚠️ Ya registrado", `${data.nombre} (${codigo}) ya accedió.`, "warning");
+                } else {
+                    fetch(`marcar_boleto.php?codigo=${codigo}`)
+                        .then(res => res.json())
+                        .then(result => {
+                            if (result.exito) {
+                                Swal.fire({
+                                    title: '✅ Bienvenido',
+                                    html: `<strong>${data.nombre}</strong><br>Código: ${codigo}<br>Mesa: ${data.mesa}<br>Personas: ${data.personas}`,
+                                    icon: 'success',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: true
+                                });
+                            } else {
+                                Swal.fire("⚠️ Error", `No se pudo registrar el acceso de ${codigo}`, "warning");
+                            }
+                        })
+                        .catch(err => {
+                            console.error("Error al marcar boleto:", err);
+                            Swal.fire("Error", `No se pudo marcar el boleto ${codigo}.`, "error");
+                        });
+                }
+            })
+            .catch(err => {
+                console.error("Error al verificar código:", err);
+                Swal.fire("Error de conexión", "No se pudo contactar con el servidor.", "error");
+            });
+    }
 
-
-    const html5QrCode = new Html5Qrcode("reader");
+    const html5QrCode = new Html5QrCode("reader");
     html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, procesarCodigo);
 </script>
 
