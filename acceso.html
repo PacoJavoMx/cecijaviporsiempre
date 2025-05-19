@@ -142,7 +142,7 @@ function validarCodigo(codigo) {
                 });
             } else if (data.usado) {
                 Swal.fire({
-                    title: "⚠️ Ya registrado",
+                    title: "⚠️ Este código ya fue utilizado",
                     text: `${data.nombre} (${codigo}) ya accedió.`,
                     icon: "warning",
                     showConfirmButton: false,
@@ -155,7 +155,7 @@ function validarCodigo(codigo) {
                     .then(result => {
                         if (result.exito) {
                             Swal.fire({
-                                title: '✅ Bienvenido, puede pasar',
+                                title: '✅ Registro válido, puede pasar',
                                 html: `<strong>${data.nombre}</strong><br>Código: ${codigo}<br>Mesa: ${data.mesa}<br>Personas: ${data.personas}`,
                                 icon: 'success',
                                 showConfirmButton: false,
