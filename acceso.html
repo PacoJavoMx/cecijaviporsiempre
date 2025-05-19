@@ -200,10 +200,7 @@ function validarCodigo(codigo) {
 }
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const html5QrCode = new Html5QrCode("reader");
-  html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, procesarCodigo);
-});
+
 
 </script>
     <!-- Footer section -->
@@ -243,5 +240,21 @@ document.addEventListener("DOMContentLoaded", function () {
     <script src="js/YouTubePopUp.js"></script>
     <script src="js/template.js"></script>
     <script src="js/scriptmusic.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const html5QrCode = new Html5Qrcode("reader");
+    html5QrCode.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        procesarCodigo,
+        (errorMessage) => {
+            console.warn("Error de escaneo:", errorMessage);
+        }
+    ).catch(err => {
+        console.error("Error al iniciar el escáner:", err);
+    });
+});
+</script>
+
 </body>
 </html>
