@@ -80,10 +80,16 @@
     <div class="col-md-10 text-center">
         <h2 class="mb-4">Control de Acceso</h2>
         <p>Escanea el código QR del boleto o introduce varios códigos separados por coma.</p>
+
+        <!-- Escáner QR -->
         <div id="reader" style="width: 300px; margin: auto;"></div>
+
+        <!-- Resultado -->
         <div id="resultado" class="mt-4 h4"></div>
+
+        <!-- Ingreso manual -->
         <div class="mt-5">
-            <textarea id="codigos_manuales" class="form-control w-75 mx-auto mb-2" rows="2" placeholder="Ej: QR001,QR002,QR045"></textarea>
+            <textarea id="codigos_manuales" class="form-control w-75 mx-auto mb-2" rows="3" placeholder="Ej: QR001,QR002,QR045"></textarea>
             <button class="btn btn-primary" onclick="procesarCodigosManuales()">Validar Códigos</button>
         </div>
     </div>
