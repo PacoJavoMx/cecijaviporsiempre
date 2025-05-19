@@ -116,23 +116,21 @@
     }
 
     function procesarCodigosManuales() {
-        const input = document.getElementById("codigos_manuales").value.trim();
-        if (!input) {
-            mostrarMensaje("Ingresa al menos un código.", "gray");
-            return;
-        }
-
-        const codigos = input.split(",").map(c => c.trim()).filter(c => c !== "");
-        if (codigos.length === 0) {
-            mostrarMensaje("Formato no válido.", "gray");
-            return;
-        }
-
-        codigos.forEach((codigo, i) => {
-            setTimeout(() => {
-                validarCodigo(codigo);
-            }, i * 1000); // Pequeña pausa entre cada código
-        });
+    const input = document.getElementById("codigos_manuales").value.trim();
+    if (!input) {
+        Swal.fire("Atención", "Ingresa al menos un código.", "info");
+        return;
+    }
+    const codigos = input.split(",").map(c => c.trim()).filter(c => c !== "");
+    if (codigos.length === 0) {
+        Swal.fire("Error", "Formato no válido.", "error");
+        return;
+    }
+    codigos.forEach((codigo, i) => {
+        setTimeout(() => {
+            validarCodigo(codigo);
+        }, i * 1000);
+    });
     }
 
     function validarCodigo(codigo) {
@@ -172,8 +170,9 @@
         });
 }
 
-const html5QrCode = new Html5Qrcode("reader");
-html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, procesarCodigo);
+
+    const html5QrCode = new Html5Qrcode("reader");
+    html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, procesarCodigo);
 </script>
 
     <!-- Footer section -->
