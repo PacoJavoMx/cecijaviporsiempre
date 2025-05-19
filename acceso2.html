@@ -17,11 +17,7 @@
     <link rel="stylesheet" href="css/YouTubePopUp.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- FOR IE9 below -->
-    <!--[if lt IE 9]>
-        <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div id="music-player">
@@ -136,41 +132,35 @@
     }
 
     function validarCodigo(codigo) {
-        fetch(`verificar_boleto.php?codigo=${codigo}`)
-            .then(res => res.json())
-            .then(data => {
-                if (!data.valido) {
-                    Swal.fire("❌ Código inválido", `${codigo} no está registrado.`, "error");
-                } else if (data.usado) {
-                    Swal.fire("⚠️ Ya registrado", `${data.nombre} (${codigo}) ya accedió.`, "warning");
-                } else {
-                    fetch(`marcar_boleto.php?codigo=${codigo}`)
-                        .then(res => res.json())
-                        .then(result => {
-                            if (result.exito) {
-                                Swal.fire({
-                                    title: '✅ Bienvenido',
-                                    html: `<strong>${data.nombre}</strong><br>Código: ${codigo}<br>Mesa: ${data.mesa}<br>Personas: ${data.personas}`,
-                                    icon: 'success',
-                                    showConfirmButton: false,
-                                    timer: 3000,
-                                    timerProgressBar: true
-                                });
-                            } else {
-                                Swal.fire("⚠️ Error", `No se pudo registrar el acceso de ${codigo}`, "warning");
-                            }
-                        })
-                        .catch(err => {
-                            console.error("Error al marcar boleto:", err);
-                            Swal.fire("Error", `No se pudo marcar el boleto ${codigo}.`, "error");
-                        });
-                }
-            })
-            .catch(err => {
-                console.error("Error al verificar código:", err);
-                Swal.fire("Error de conexión", "No se pudo contactar con el servidor.", "error");
-            });
-    }
+    fetch(`verificar_boleto.php?codigo=${codigo}`)
+        .then(res => res.json())
+        .then(data => {
+            if (!data.valido) {
+                mostrarMensaje(`❌ ${codigo} no válido`, "red");
+            } else if (data.usado) {
+                mostrarMensaje(`⚠️ ${data.nombre} (${codigo}) ya registrado`, "orange");
+            } else {
+                // Si no ha sido usado, lo marcamos y luego mostramos la palomita verde
+                fetch(`marcar_boleto.php?codigo=${codigo}`)
+                    .then(res => res.json())
+                    .then(result => {
+                        if (result.exito) {
+                            mostrarMensaje(`✅ ${data.nombre} (${codigo}) — ${data.personas} persona(s) — Mesa ${data.mesa}`, "green");
+                        } else {
+                            mostrarMensaje(`⚠️ No se pudo marcar el boleto ${codigo}.`, "orange");
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Error al marcar boleto:", err);
+                        mostrarMensaje(`Error al registrar el acceso de ${codigo}.`, "gray");
+                    });
+            }
+        })
+        .catch(err => {
+            console.error("Error al verificar código:", err);
+            mostrarMensaje("Error de conexión con el servidor", "gray");
+        });
+}
 
 
     const html5QrCode = new Html5Qrcode("reader");
