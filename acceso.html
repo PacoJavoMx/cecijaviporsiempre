@@ -97,6 +97,11 @@
 
 <script src="https://unpkg.com/html5-qrcode"></script>
 <script>
+        function mostrarMensaje(texto, color = "black") {
+        const div = document.getElementById("resultado");
+        div.innerText = texto;
+        div.style.color = color;
+    }
 function procesarCodigo(qr) {
     validarCodigo(qr);
 }
