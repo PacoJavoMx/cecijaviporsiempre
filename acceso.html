@@ -147,7 +147,7 @@ function validarCodigo(codigo) {
                     .then(result => {
                         if (result.exito) {
                             Swal.fire({
-                                title: '✅ Bienvenido',
+                                title: '✅ Bienvenido, puede pasar',
                                 html: `<strong>${data.nombre}</strong><br>Código: ${codigo}<br>Mesa: ${data.mesa}<br>Personas: ${data.personas}`,
                                 icon: 'success',
                                 showConfirmButton: false,
