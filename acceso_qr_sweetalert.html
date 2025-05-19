@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cecilia & Javier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Didact+Gothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/YouTubePopUp.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<div class="row mb-30 justify-content-center">
+    <div class="col-md-10 text-center">
+        <h2 class="mb-4">Control de Acceso</h2>
+        <p>Escanea el código QR del boleto o introduce varios códigos separados por coma.</p>
+        <div id="reader" style="width: 300px; margin: auto;"></div>
+        <div class="mt-5">
+            <textarea id="codigos_manuales" class="form-control w-75 mx-auto mb-2" rows="3" placeholder="Ej: QR001,QR002,QR045"></textarea>
+            <button class="btn btn-primary" onclick="procesarCodigosManuales()">Validar Códigos</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script>
+function procesarCodigo(qr) {
+    validarCodigo(qr);
+}
+
+function procesarCodigosManuales() {
+    const input = document.getElementById("codigos_manuales").value.trim();
+    if (!input) {
+        Swal.fire("Atención", "Ingresa al menos un código.", "info");
+        return;
+    }
+    const codigos = input.split(",").map(c => c.trim()).filter(c => c !== "");
+    if (codigos.length === 0) {
+        Swal.fire("Error", "Formato no válido.", "error");
+        return;
+    }
+    codigos.forEach((codigo, i) => {
+        setTimeout(() => {
+            validarCodigo(codigo);
+        }, i * 1000);
+    });
+}
+
+function validarCodigo(codigo) {
+    fetch(`verificar_boleto.php?codigo=${codigo}`)
+        .then(res => res.json())
+        .then(data => {
+            if (!data.valido) {
+                Swal.fire("❌ Código inválido", `${codigo} no está registrado.`, "error");
+            } else if (data.usado) {
+                Swal.fire("⚠️ Ya registrado", `${data.nombre} (${codigo}) ya accedió.`, "warning");
+            } else {
+                fetch(`marcar_boleto.php?codigo=${codigo}`)
+                    .then(res => res.json())
+                    .then(result => {
+                        if (result.exito) {
+                            Swal.fire({
+                                title: '✅ Bienvenido',
+                                html: `<strong>${data.nombre}</strong><br>Código: ${codigo}<br>Mesa: ${data.mesa}<br>Personas: ${data.personas}`,
+                                icon: 'success',
+                                confirmButtonColor: '#b08c3e'
+                            });
+                        } else {
+                            Swal.fire("⚠️ Error", `No se pudo registrar el acceso de ${codigo}`, "warning");
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Error al marcar boleto:", err);
+                        Swal.fire("Error", `No se pudo marcar el boleto ${codigo}.`, "error");
+                    });
+            }
+        })
+        .catch(err => {
+            console.error("Error al verificar código:", err);
+            Swal.fire("Error de conexión", "No se pudo contactar con el servidor.", "error");
+        });
+}
+
+const html5QrCode = new Html5QrCode("reader");
+html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, procesarCodigo);
+</script>
+</body>
+</html>
