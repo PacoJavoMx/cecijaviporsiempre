@@ -95,7 +95,7 @@
 
         <!-- Ingreso manual -->
         <div class="mt-5">
-            <textarea id="codigos_manuales" class="form-control w-75 mx-auto mb-2" rows="3" placeholder="Ej: QR001,QR002,QR045"></textarea>
+            <textarea id="codigos_manuales" class="form-control w-75 mx-auto mb-2" rows="2" placeholder="Ej: QR001,QR002,QR045"></textarea>
             <button class="btn btn-primary" onclick="procesarCodigosManuales()">Validar Códigos</button>
         </div>
     </div>
@@ -115,25 +115,23 @@
         validarCodigo(qr);
     }
 
-    function procesarCodigosManuales() {
-        const input = document.getElementById("codigos_manuales").value.trim();
-        if (!input) {
-            mostrarMensaje("Ingresa al menos un código.", "gray");
-            return;
-        }
-
-        const codigos = input.split(",").map(c => c.trim()).filter(c => c !== "");
-        if (codigos.length === 0) {
-            mostrarMensaje("Formato no válido.", "gray");
-            return;
-        }
-
-        codigos.forEach((codigo, i) => {
-            setTimeout(() => {
-                validarCodigo(codigo);
-            }, i * 1000); // Pequeña pausa entre cada código
-        });
+function procesarCodigosManuales() {
+    const input = document.getElementById("codigos_manuales").value.trim();
+    if (!input) {
+        Swal.fire("Atención", "Ingresa al menos un código.", "info");
+        return;
     }
+    const codigos = input.split(",").map(c => c.trim()).filter(c => c !== "");
+    if (codigos.length === 0) {
+        Swal.fire("Error", "Formato no válido.", "error");
+        return;
+    }
+    codigos.forEach((codigo, i) => {
+        setTimeout(() => {
+            validarCodigo(codigo);
+        }, i * 1000);
+    });
+}
 
 function validarCodigo(codigo) {
     fetch(`verificar_boleto.php?codigo=${codigo}`)
