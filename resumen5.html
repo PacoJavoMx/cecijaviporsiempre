@@ -98,7 +98,7 @@
           <th>Nombre<br><input type="text" placeholder="Buscar Nombre" /></th>
           <th>Mesa<br><input type="text" placeholder="Buscar Mesa" /></th>
           <th>Personas<br><input type="text" placeholder="Buscar Personas" /></th>
-          <th>Escaneado<br><input type="text" placeholder="✅ o ❌" /></th>
+          <th>Escaneado<br><input type="text" placeholder="SI o NO" /></th>
           <th>Fecha/Hora Entrada<br><input type="text" placeholder="Buscar Fecha" /></th>
         </tr>
       </thead>
@@ -194,8 +194,8 @@
           let totalEscaneados = 0;
           let totalRegistros = data.length;
           data.forEach(row => {
-            const escaneado = row.acceso_confirmado == 1 ? '✅' : '❌';
-            if (escaneado === '✅') totalEscaneados++;
+            const escaneado = row.acceso_confirmado == 1 ? 'SI' : 'NO';
+            if (escaneado === 'SI') totalEscaneados++;
             table.row.add([
               row.codigo_qr,
               row.nombre,
