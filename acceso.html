@@ -238,17 +238,25 @@ function validarCodigo(codigo) {
     <script>
 document.addEventListener("DOMContentLoaded", function () {
     const html5QrCode = new Html5Qrcode("reader");
-    html5QrCode.start(
-        { facingMode: "environment" },
-        { fps: 10, qrbox: 250 },
-        procesarCodigo,
-        (errorMessage) => {
-            console.warn("Error de escaneo:", errorMessage);
-        }
-    ).catch(err => {
-        console.error("Error al iniciar el escáner:", err);
-    });
+
+    // Solicita la cámara (asegurándote que la cámara esté habilitada)
+    html5QrCode.getCameras()
+        .then(cameras => {
+            if (cameras && cameras.length > 0) {
+                const cameraId = cameras[0].id; // Selecciona la primera cámara disponible
+                html5QrCode.start(cameraId, { fps: 10, qrbox: 250 }, procesarCodigo, (errorMessage) => {
+                    console.warn("Error de escaneo:", errorMessage);
+                }).catch(err => {
+                    console.error("Error al iniciar el escáner:", err);
+                });
+            } else {
+                console.log("No se encontraron cámaras.");
+            }
+        }).catch(err => {
+            console.error("Error al obtener las cámaras:", err);
+        });
 });
+
 </script>
 
 </body>
