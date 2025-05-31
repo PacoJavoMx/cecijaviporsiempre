@@ -136,18 +136,16 @@ function validarCodigo(codigo) {
                     title: "❌ Código inválido",
                     text: `${codigo} no está registrado.`,
                     icon: "error",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true
+                    showConfirmButton: true, // Mostrar el botón de confirmación
+                    confirmButtonText: "Cerrar"
                 });
             } else if (data.usado) {
                 Swal.fire({
                     title: "⚠️ Este código ya fue utilizado",
                     text: `${data.nombre} (${codigo}) ya accedió.`,
                     icon: "warning",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true
+                    showConfirmButton: true, // Mostrar el botón de confirmación
+                    confirmButtonText: "Cerrar"
                 });
             } else {
                 fetch(`marcar_boleto.php?codigo=${codigo}`)
@@ -158,18 +156,16 @@ function validarCodigo(codigo) {
                                 title: '✅ Registro válido, puede pasar',
                                 html: `<strong>${data.nombre}</strong><br>Código: ${codigo}<br>Mesa: ${data.mesa}<br>Personas: ${data.personas}`,
                                 icon: 'success',
-                                showConfirmButton: false,
-                                timer: 3000,
-                                timerProgressBar: true
+                                showConfirmButton: true, // Mostrar el botón de confirmación
+                                confirmButtonText: "Confirmar"
                             });
                         } else {
                             Swal.fire({
                                 title: "⚠️ Error",
                                 text: `No se pudo registrar el acceso de ${codigo}`,
                                 icon: "warning",
-                                showConfirmButton: false,
-                                timer: 3000,
-                                timerProgressBar: true
+                                showConfirmButton: true, // Mostrar el botón de confirmación
+                                confirmButtonText: "Cerrar"
                             });
                         }
                     })
@@ -179,9 +175,8 @@ function validarCodigo(codigo) {
                             title: "Error",
                             text: `No se pudo marcar el boleto ${codigo}.`,
                             icon: "error",
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true
+                            showConfirmButton: true, // Mostrar el botón de confirmación
+                            confirmButtonText: "Cerrar"
                         });
                     });
             }
@@ -192,12 +187,12 @@ function validarCodigo(codigo) {
                 title: "Error de conexión",
                 text: "No se pudo contactar con el servidor.",
                 icon: "error",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true
+                showConfirmButton: true, // Mostrar el botón de confirmación
+                confirmButtonText: "Cerrar"
             });
         });
 }
+
 
 
 
