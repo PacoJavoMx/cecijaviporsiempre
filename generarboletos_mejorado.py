@@ -77,12 +77,15 @@ def generar_pdf(codigo_qr, nombre, template_path, output_path):
     os.remove(temp_img)
 
 # === GENERAR LOS PDFS ===
-for row in rows:
+total = len(rows)
+for i, row in enumerate(rows, start=1):
     codigo = row["codigo_qr"]
     nombre_original = row.get("nombre", "")
     nombre_limpio = nombre_original.strip().title().replace(" ", "_")
     nombre_archivo = f"{codigo}_{nombre_limpio}.pdf"
     output_path = os.path.join(OUTPUT_DIR, nombre_archivo)
+    
+    print(f"[{i}/{total}] Generando PDF para: {nombre_original} (Código: {codigo})")
     generar_pdf(codigo, nombre_original, TEMPLATE_PATH, output_path)
 
 # === CREAR ARCHIVO ZIP ===
