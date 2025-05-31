@@ -105,6 +105,28 @@
         div.innerText = texto;
         div.style.color = color;
     }
+function procesarCodigo(qr) {
+    validarCodigo(qr);
+}
+
+function procesarCodigosManuales() {
+    const input = document.getElementById("codigos_manuales").value.trim();
+    if (!input) {
+        Swal.fire("Atención", "Ingresa al menos un código.", "info");
+        return;
+    }
+    const codigos = input.split(",").map(c => c.trim()).filter(c => c !== "");
+    if (codigos.length === 0) {
+        Swal.fire("Error", "Formato no válido.", "error");
+        return;
+    }
+    codigos.forEach((codigo, i) => {
+        setTimeout(() => {
+            validarCodigo(codigo);
+        }, i * 1000);
+    });
+}
+
 function validarCodigo(codigo) {
     fetch(`verificar_boleto.php?codigo=${codigo}`)
         .then(res => res.json())
@@ -114,16 +136,18 @@ function validarCodigo(codigo) {
                     title: "❌ Código inválido",
                     text: `${codigo} no está registrado.`,
                     icon: "error",
-                    showConfirmButton: true, // Agrega el botón de confirmación
-                    confirmButtonText: "Cerrar"
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true
                 });
             } else if (data.usado) {
                 Swal.fire({
                     title: "⚠️ Este código ya fue utilizado",
                     text: `${data.nombre} (${codigo}) ya accedió.`,
                     icon: "warning",
-                    showConfirmButton: true, // Agrega el botón de confirmación
-                    confirmButtonText: "Cerrar"
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true
                 });
             } else {
                 fetch(`marcar_boleto.php?codigo=${codigo}`)
@@ -134,16 +158,18 @@ function validarCodigo(codigo) {
                                 title: '✅ Registro válido, puede pasar',
                                 html: `<strong>${data.nombre}</strong><br>Código: ${codigo}<br>Mesa: ${data.mesa}<br>Personas: ${data.personas}`,
                                 icon: 'success',
-                                showConfirmButton: true, // Agrega el botón de confirmación
-                                confirmButtonText: "Confirmar"
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true
                             });
                         } else {
                             Swal.fire({
                                 title: "⚠️ Error",
                                 text: `No se pudo registrar el acceso de ${codigo}`,
                                 icon: "warning",
-                                showConfirmButton: true, // Agrega el botón de confirmación
-                                confirmButtonText: "Cerrar"
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true
                             });
                         }
                     })
@@ -153,8 +179,9 @@ function validarCodigo(codigo) {
                             title: "Error",
                             text: `No se pudo marcar el boleto ${codigo}.`,
                             icon: "error",
-                            showConfirmButton: true, // Agrega el botón de confirmación
-                            confirmButtonText: "Cerrar"
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true
                         });
                     });
             }
@@ -165,13 +192,12 @@ function validarCodigo(codigo) {
                 title: "Error de conexión",
                 text: "No se pudo contactar con el servidor.",
                 icon: "error",
-                showConfirmButton: true, // Agrega el botón de confirmación
-                confirmButtonText: "Cerrar"
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true
             });
         });
 }
-
-
 
 
 
