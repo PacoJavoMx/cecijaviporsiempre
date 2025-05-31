@@ -35,6 +35,13 @@ conn.close()
 # === CREAR DIRECTORIO DE SALIDA ===
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+# Vaciar carpeta de salida antes de comenzar
+for file in os.listdir(OUTPUT_DIR):
+    file_path = os.path.join(OUTPUT_DIR, file)
+    if os.path.isfile(file_path):
+        os.remove(file_path)
+
+
 # === FUNCIÓN PARA GENERAR PDF ===
 def generar_pdf(codigo_qr, nombre, template_path, output_path):
     qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=10, border=4)
@@ -77,16 +84,16 @@ def generar_pdf(codigo_qr, nombre, template_path, output_path):
     os.remove(temp_img)
 
 # === GENERAR LOS PDFS ===
-total = len(rows)
-for i, row in enumerate(rows, start=1):
+from tqdm import tqdm
+
+for row in tqdm(rows, desc="Generando boletos", unit="boleto"):
     codigo = row["codigo_qr"]
     nombre_original = row.get("nombre", "")
     nombre_limpio = nombre_original.strip().title().replace(" ", "_")
     nombre_archivo = f"{codigo}_{nombre_limpio}.pdf"
     output_path = os.path.join(OUTPUT_DIR, nombre_archivo)
-    
-    print(f"[{i}/{total}] Generando PDF para: {nombre_original} (Código: {codigo})")
     generar_pdf(codigo, nombre_original, TEMPLATE_PATH, output_path)
+
 
 # === CREAR ARCHIVO ZIP ===
 ZIP_PATH = os.path.join(OUTPUT_DIR, "invitaciones_cecijavi.zip")
@@ -99,4 +106,5 @@ with zipfile.ZipFile(ZIP_PATH, 'w', zipfile.ZIP_DEFLATED) as zipf:
 print(f"ZIP generado en: {ZIP_PATH}")
 
 # === ABRIR CARPETA DE SALIDA ===
-subprocess.run(['explorer', OUTPUT_DIR])
+# subprocess.run(['explorer', OUTPUT_DIR])
+
