@@ -92,7 +92,7 @@
 
         <!-- Ingreso manual -->
         <div class="mt-5">
-            <textarea id="codigos_manuales" class="form-control w-75 mx-auto mb-2" rows="3" placeholder="Ej: QR001,QR002,QR045"></textarea>
+            <textarea id="codigos_manuales" class="form-control w-75 mx-auto mb-2" rows="3" placeholder="Ej:CJ-J001-13E2,CJ-C002-14E3"></textarea>
             <button class="btn btn-primary" onclick="procesarCodigosManuales()">Validar Códigos</button>
         </div>
     </div>
@@ -238,23 +238,16 @@ function validarCodigo(codigo) {
     <script>
 document.addEventListener("DOMContentLoaded", function () {
     const html5QrCode = new Html5Qrcode("reader");
-
-    // Solicita la cámara (asegurándote que la cámara esté habilitada)
-    html5QrCode.getCameras()
-        .then(cameras => {
-            if (cameras && cameras.length > 0) {
-                const cameraId = cameras[0].id; // Selecciona la primera cámara disponible
-                html5QrCode.start(cameraId, { fps: 10, qrbox: 250 }, procesarCodigo, (errorMessage) => {
-                    console.warn("Error de escaneo:", errorMessage);
-                }).catch(err => {
-                    console.error("Error al iniciar el escáner:", err);
-                });
-            } else {
-                console.log("No se encontraron cámaras.");
-            }
-        }).catch(err => {
-            console.error("Error al obtener las cámaras:", err);
-        });
+    html5QrCode.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        procesarCodigo,
+        (errorMessage) => {
+            console.warn("Error de escaneo:", errorMessage);
+        }
+    ).catch(err => {
+        console.error("Error al iniciar el escáner:", err);
+    });
 });
 
 </script>
