@@ -394,35 +394,35 @@
 
 
 // Countdown wedding
-  (function () {
+(function () {
   const second = 1000,
         minute = second * 60,
         hour = minute * 60,
         day = hour * 24;
-  let birthday = "Jun 15, 2025 13:30:00",
-      countDown = new Date(birthday).getTime(),
-      x = setInterval(function() {    
+
+  let weddingDate = "Jun 01, 2025 14:40:00",
+      countDown = new Date(weddingDate).getTime(),
+      x = setInterval(function () {
         let now = new Date().getTime(),
             distance = countDown - now;
 
-        document.getElementById("days").innerText = Math.floor(distance / (day)),
-          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+        if (distance >= 0) {
+          document.getElementById("days").innerText = Math.floor(distance / day);
+          document.getElementById("hours").innerText = Math.floor((distance % day) / hour);
+          document.getElementById("minutes").innerText = Math.floor((distance % hour) / minute);
+          document.getElementById("seconds").innerText = Math.floor((distance % minute) / second);
+        } else {
+          let headline = document.getElementById("headline");
+          if (headline) headline.innerText = "¡Es nuestra boda!";
 
-        //do something later when date is reached
-        if (distance < 0) {
-          let headline = document.getElementById("headline"),
-              countdown = document.getElementById("countdown"),
-              content = document.getElementById("content");
-
-          headline.innerText = "It's our wedding!";
-          countdown.style.display = "none";
-          content.style.display = "block";
+          // Ocultar los contadores
+          document.getElementById("days").parentElement.style.display = "none";
+          document.getElementById("hours").parentElement.style.display = "none";
+          document.getElementById("minutes").parentElement.style.display = "none";
+          document.getElementById("seconds").parentElement.style.display = "none";
 
           clearInterval(x);
         }
-        //seconds
-      }, 0)
-  }());
-    
+      }, 1000);
+})();
+
