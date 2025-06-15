@@ -77,7 +77,6 @@
                     <li class="nav-item"><a class="nav-link" href="#gifts" data-scroll-nav="7">Regalos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#photos" data-scroll-nav="8">Compartir Fotos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#rsvp" data-scroll-nav="9">Confirmar asistencia</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" onclick="mostrarLogin()">Control de acceso</a></li>
                     
 				</ul>
 			</div>
@@ -498,59 +497,7 @@
                 </div>
             </div>
         </div>  
-<!-- Acceso de Invitados -->
-<div id="acceso" class="section-padding bg-cream">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h6 class="section-subtitle">Control de Entrada</h6>
-        <h2 class="section-title">Acceso para invitados</h2>
-        <p>En esta sección podrás escanear el código QR de tu boleto para registrar tu llegada el día del evento. También puedes validar manualmente si es necesario.</p>
-        <br>
-        <a href="#" class="btn btn-primary" onclick="mostrarLogin()">
-          Ingresar al Control de Acceso
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal de acceso con contraseña -->
-<div id="accesoModal" class="modal" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); text-align:center; padding-top:10%;">
-  <div style="background:#fff; padding:20px; max-width:300px; margin:auto; border-radius:10px;">
-    <h5>Ingresa la contraseña</h5>
-    <input type="password" id="passAcceso" class="form-control" placeholder="Contraseña"><br>
-    <button class="btn btn-primary" onclick="verificarAcceso()">Entrar</button>
-    <br><br>
-    <a href="#" onclick="cerrarLogin()">Cancelar</a>
-  </div>
-</div>
-
-<script>
-  function mostrarLogin() {
-    document.getElementById("accesoModal").style.display = "block";
-  }
-
-  function cerrarLogin() {
-    document.getElementById("accesoModal").style.display = "none";
-  }
-
-function verificarAcceso() {
-  const pass = document.getElementById("passAcceso").value;
-  const claveCorrecta = "1986*";
-
-  document.getElementById("accesoModal").style.display = "none"; // Ocultar el modal siempre
-
-  if (pass === claveCorrecta) {
-    window.location.href = "acceso_qr_delay.html";
-  } else {
-    Swal.fire("Contraseña incorrecta", "Por favor intenta de nuevo.", "error");
-  }
-}
-
-</script>
-
-
+    
     <!-- Instagram section -->
     <div class="insta">
         <div class="container flex">
