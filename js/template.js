@@ -400,7 +400,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let weddingDate = "Jun 15, 2025 13:15:00",
+  let weddingDate = "Jun 15, 2025 13:30:00",
       countDown = new Date(weddingDate).getTime(),
       x = setInterval(function () {
         let now = new Date().getTime(),
