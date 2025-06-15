@@ -400,7 +400,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let weddingDate = "Jun 15, 2025 13:40:00",
+  let weddingDate = "Jun 15, 2025 13:15:00",
       countDown = new Date(weddingDate).getTime(),
       x = setInterval(function () {
         let now = new Date().getTime(),
@@ -413,7 +413,7 @@
           document.getElementById("seconds").innerText = Math.floor((distance % minute) / second);
         } else {
           let headline = document.getElementById("headline");
-          if (headline) headline.innerText = "¡Es nuestra boda!";
+          if (headline) headline.innerText = "¡Es nuestra boda, te vemos en el salón para celebrar!";
 
           // Ocultar los contadores
           document.getElementById("days").parentElement.style.display = "none";
