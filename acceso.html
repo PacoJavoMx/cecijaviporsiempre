@@ -126,7 +126,7 @@ let tiempoUltimoEscaneo = 0;
             setTimeout(() => {
                 puedeEscanear = true;
                 document.getElementById("loading-icon").style.display = "none";
-            }, 2000);
+            }, 5000);
         }
 
         function procesarCodigosManuales() {
@@ -143,7 +143,7 @@ let tiempoUltimoEscaneo = 0;
             codigos.forEach((codigo, i) => {
                 setTimeout(() => {
                     validarCodigo(codigo);
-                }, i * 1000);
+                }, i * 5000);
             });
         }
 
