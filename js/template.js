@@ -393,36 +393,34 @@
 
 
 
-// Countdown wedding
+// Count-up wedding (tiempo desde la boda)
 (function () {
   const second = 1000,
         minute = second * 60,
         hour = minute * 60,
         day = hour * 24;
 
-  let weddingDate = "Jun 15, 2025 13:30:00",
-      countDown = new Date(weddingDate).getTime(),
-      x = setInterval(function () {
-        let now = new Date().getTime(),
-            distance = countDown - now;
+  let weddingDate = new Date("Jun 15, 2025 13:30:00").getTime();
 
-        if (distance >= 0) {
-          document.getElementById("days").innerText = Math.floor(distance / day);
-          document.getElementById("hours").innerText = Math.floor((distance % day) / hour);
-          document.getElementById("minutes").innerText = Math.floor((distance % hour) / minute);
-          document.getElementById("seconds").innerText = Math.floor((distance % minute) / second);
-        } else {
-          let headline = document.getElementById("headline");
-          if (headline) headline.innerText = "¡Es nuestra boda, te vemos en el salón para celebrar!";
+  let x = setInterval(function () {
+    let now = new Date().getTime();
+    let elapsed = now - weddingDate;
 
-          // Ocultar los contadores
-          document.getElementById("days").parentElement.style.display = "none";
-          document.getElementById("hours").parentElement.style.display = "none";
-          document.getElementById("minutes").parentElement.style.display = "none";
-          document.getElementById("seconds").parentElement.style.display = "none";
+    if (elapsed >= 0) {
+      document.getElementById("days").innerText = Math.floor(elapsed / day);
+      document.getElementById("hours").innerText = Math.floor((elapsed % day) / hour);
+      document.getElementById("minutes").innerText = Math.floor((elapsed % hour) / minute);
+      document.getElementById("seconds").innerText = Math.floor((elapsed % minute) / second);
 
-          clearInterval(x);
-        }
-      }, 1000);
+      let headline = document.getElementById("headline");
+      if (headline) {
+        headline.innerText = "¡Gracias por acompañarnos! Han pasado:";
+      }
+    } else {
+      // Si por alguna razón la fecha actual es antes de la boda (ej: error de reloj)
+      document.getElementById("headline").innerText = "Contador activado después de la boda.";
+    }
+  }, 1000);
 })();
+
 
