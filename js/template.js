@@ -400,27 +400,54 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let weddingDate = new Date("Jun 15, 2025 13:30:00").getTime();
+  const weddingDate = new Date("2025-06-15T13:30:00");
 
   let x = setInterval(function () {
-    let now = new Date().getTime();
-    let elapsed = now - weddingDate;
+    const now = new Date();
 
-    if (elapsed >= 0) {
-      document.getElementById("days").innerText = Math.floor(elapsed / day);
-      document.getElementById("hours").innerText = Math.floor((elapsed % day) / hour);
-      document.getElementById("minutes").innerText = Math.floor((elapsed % hour) / minute);
-      document.getElementById("seconds").innerText = Math.floor((elapsed % minute) / second);
+    if (now >= weddingDate) {
+      let years = now.getFullYear() - weddingDate.getFullYear();
 
-      let headline = document.getElementById("headline");
+      const anniversaryThisYear = new Date(
+        now.getFullYear(),
+        weddingDate.getMonth(),
+        weddingDate.getDate(),
+        weddingDate.getHours(),
+        weddingDate.getMinutes(),
+        weddingDate.getSeconds()
+      );
+
+      if (now < anniversaryThisYear) {
+        years--;
+      }
+
+      const lastAnniversary = new Date(
+        weddingDate.getFullYear() + years,
+        weddingDate.getMonth(),
+        weddingDate.getDate(),
+        weddingDate.getHours(),
+        weddingDate.getMinutes(),
+        weddingDate.getSeconds()
+      );
+
+      const elapsedAfterYears = now - lastAnniversary;
+
+      document.getElementById("years").innerText = years;
+      document.getElementById("days").innerText = Math.floor(elapsedAfterYears / day);
+      document.getElementById("hours").innerText = Math.floor((elapsedAfterYears % day) / hour);
+      document.getElementById("minutes").innerText = Math.floor((elapsedAfterYears % hour) / minute);
+      document.getElementById("seconds").innerText = Math.floor((elapsedAfterYears % minute) / second);
+
+      const headline = document.getElementById("headline");
       if (headline) {
         headline.innerText = "¡Gracias por acompañarnos! Han pasado:";
       }
     } else {
-      // Si por alguna razón la fecha actual es antes de la boda (ej: error de reloj)
-      document.getElementById("headline").innerText = "Contador activado después de la boda.";
+      const headline = document.getElementById("headline");
+      if (headline) {
+        headline.innerText = "Contador activado después de la boda.";
+      }
     }
   }, 1000);
 })();
-
 
